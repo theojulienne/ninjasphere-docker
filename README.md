@@ -47,10 +47,14 @@ All "user data" will be stored in ```volume-data``` in the current directory - t
 Ports 1883 (MQTT) and 8000 (HomeCloud REST) are exposed from the container (and the sphere.sh script publishes them for you too).
 
 REST services can be accessed at for example:
-```http://your_docker_host_ip:8000/rest/v1/things```
+```
+http://your_docker_host_ip:8000/rest/v1/things
+```
 
 MQTT can be sniffed using the mosquitto client tools (available as part of homebrew's mosquitto install and ```mosquitto-clients``` on Ubuntu):
-```mosquitto_sub -t '#' -v -h your_docker_host_ip```
+```
+mosquitto_sub -t '#' -v -h your_docker_host_ip
+```
 
 ## Missing Services & Errata
 
