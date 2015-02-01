@@ -8,8 +8,10 @@ Currently only runs on x86_64 Docker, and natively supports boot2docker.
 
 You'll need docker set up and ready to go. Start by running:
 ```
-./sphere.sh start
+./sphere.sh start <serial number>
 ```
+
+Subsequent ```start``` calls don't need the serial number, it's saved. Pair the Sphere here: http://api.sphere.ninja/ Note that the IP shown after pairing and the link won't work, but you can verify from the logs that it's paired.
 
 To get a list of supported commands (they are just simple convenience wrappers around docker):
 ```
@@ -43,6 +45,12 @@ All "user data" will be stored in ```volume-data``` in the current directory - t
 ## Exposed Services
 
 Ports 1883 (MQTT) and 8000 (HomeCloud REST) are exposed from the container (and the sphere.sh script publishes them for you too).
+
+REST services can be accessed at for example:
+```http://your_docker_host_ip:8000/rest/v1/things```
+
+MQTT can be sniffed using the mosquitto client tools (available as part of homebrew's mosquitto install and ```mosquitto-clients``` on Ubuntu):
+```mosquitto_sub -t '#' -v -h your_docker_host_ip```
 
 ## Missing Services & Errata
 
