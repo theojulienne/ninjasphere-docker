@@ -23,7 +23,7 @@ Most usefully:
 
 And the convenient wrapper to run a Go driver pointing at the docker instance:
 ```
-...../ninjasphere-docker/docker/sphere.sh run-driver ./bin/driver-go-lifx [any additional arguments to the driver]
+..../ninjasphere-docker/docker/sphere.sh run-driver ./bin/driver-awesome [extra driver arguments]
 ```
 
 ## Data Persistance
