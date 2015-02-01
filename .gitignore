@@ -1,0 +1,8 @@
+/bin-*
+/mqtt-bridgeify
+/sphere-client
+/sphere-config
+/sphere-director
+/sphere-go-homecloud
+/sphere-schemas
+/volume-data

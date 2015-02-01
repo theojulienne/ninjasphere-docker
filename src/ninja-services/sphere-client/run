@@ -1,0 +1,12 @@
+#!/bin/sh
+
+sv start /home/ninja/service/mqtt-bridgeify || exit 1
+
+# make sure sphere-homecloud is NOT running until we later turn it on
+sv stop /home/ninja/service/sphere-homecloud
+
+mkdir -p /data/etc/avahi/services /data/etc/opt/ninja
+chown -R ninja.ninja /data
+
+cd /opt/ninjablocks/sphere-client
+exec /opt/ninjablocks/sphere-client/sphere-client --cloud-production

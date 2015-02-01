@@ -1,0 +1,9 @@
+#!/bin/sh
+
+sv start mosquitto || exit 1
+sv start redis || exit 1
+
+sleep 2
+
+exec 2>&1
+exec chpst -uninja runsvdir /home/ninja/service

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /opt/ninjablocks/bin/mqtt-bridgeify agent -serial=$(sphere-serial)
