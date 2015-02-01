@@ -23,7 +23,17 @@ Most usefully:
 
 And the convenient wrapper to run a Go driver pointing at the docker instance:
 ```
-..../ninjasphere-docker/sphere.sh run-driver ./bin/driver-awesome [extra driver arguments]
+..../ninjasphere-docker/sphere.sh run-driver ./driver-awesome [extra driver arguments]
+```
+
+## Complete Driver Example
+
+A more complete example of getting an entire Go driver into your local Go sources and running it:
+```
+go get github.com/ninjasphere/driver-go-chromecast
+cd $GOPATH/src/github.com/ninjasphere/driver-go-chromecast
+go build
+..../ninjasphere-docker/sphere.sh run-driver ./driver-go-chromecast
 ```
 
 ## Data Persistance
