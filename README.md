@@ -2,6 +2,8 @@
 
 Runs a small, self-contained and definitely subtly-different-to-a-real-sphere copy of the Ninja Sphere client services.
 
+Currently only runs on x86_64 Docker, and natively supports boot2docker.
+
 ## Getting Started
 
 You'll need docker set up and ready to go. Start by running:
