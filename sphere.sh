@@ -2,6 +2,8 @@
 
 NINJA_SERIAL=$2
 
+SCRIPT_PATH=$(cd $(dirname $0); pwd)
+
 start() {
 	if [[ $NINJA_SERIAL == "" ]]; then
 		if [ -f volume-data/sphere-serial.conf ]; then
@@ -44,6 +46,24 @@ logs() {
 	docker $@ ninjasphere
 }
 
+run-driver() {
+	export sphere_installDirectory=$SCRIPT_PATH
+	export PATH=$PATH:$SCRIPT_PATH/driver-bin
+
+	if [[ "$1" == "" ]]; then
+		echo "You must specify the path to the driver"
+		exit 1
+	fi
+
+	MQTT_HOST=127.0.0.1
+
+	if which boot2docker >/dev/null; then
+		MQTT_HOST=$(boot2docker ip 2>/dev/null)
+	fi
+
+	$@ --mqtt.host=$MQTT_HOST --mqtt.port=1883
+}
+
 case "$1" in
 	start)
 		start
@@ -59,6 +79,9 @@ case "$1" in
 		;;
 	logs)
 		logs $@
+		;;
+	run-driver)
+		run-driver $2
 		;;
 	*)
 		echo "Usage: $0 start [serial]  -- start the sphere stack, serial must be specified the first time"
